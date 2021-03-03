@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8157698052225483313}
   - component: {fileID: 3192681607077060751}
   - component: {fileID: 8095534162025369521}
+  - component: {fileID: 5758813164886377013}
   m_Layer: 0
   m_Name: StartCubes
   m_TagString: Untagged
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3192681607077060751}
+  isDestroyed: 0
 --- !u!54 &3192681607077060751
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,3 +142,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6775137, y: 1.24, z: 1.49}
   m_Center: {x: 0.008757089, y: 0, z: 0}
+--- !u!114 &5758813164886377013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3001984431832823633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab27cafa44f6d6c4da857d459e6a8032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myColors:
+  - {r: 0, g: 0.31016356, b: 0.8018868, a: 1}
+  - {r: 0, g: 0.11690723, b: 0.3018868, a: 1}
+  - {r: 0, g: 0.30980393, b: 0.8000001, a: 1}
+  colorIndex: 1
+  lerpTime: 9

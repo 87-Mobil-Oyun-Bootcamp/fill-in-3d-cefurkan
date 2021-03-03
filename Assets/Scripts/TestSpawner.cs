@@ -8,10 +8,7 @@ public class TestSpawner : MonoBehaviour
 {
     public GameObject cube;
     public List<GameObject> cubeList;
-    public Transform startPos;
-    private Vector3 _pos;
 
-    public GameObject startCube;
     private void Start()
     {
         LevelManager.Instance.blockContainer.localPosition = new Vector3(transform.position.x + 7.5f,

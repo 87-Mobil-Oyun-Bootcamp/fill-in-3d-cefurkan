@@ -27,19 +27,15 @@ public class LevelManager : MonoBehaviour
     int currentLevelIndex = 0;
 
     [HideInInspector]
-    public FillAreaSpawner blockSpawner = new FillAreaSpawner();
+    public FillAreaSpawner fillAreaSpawner = new FillAreaSpawner();
 
-    List<FillAreaController> createdBlocks = new List<FillAreaController>();
-    List<FillAreaController> collectedBlocks = new List<FillAreaController>();
-
-    List<GameObject> blocksFromImage = new List<GameObject>();
-    List<StartCube> startedCubes = new List<StartCube>();
-
-
+    public List<GameObject> blocksFromImage = new List<GameObject>();
+    public List<StartCube> startedCubes = new List<StartCube>();
 
     public Transform startCubeTransform;
-
     public GameObject startCubes;
+
+
 
     private void Awake()
     {
@@ -52,26 +48,23 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        blockSpawner = GetComponent<FillAreaSpawner>();
+        fillAreaSpawner = GetComponent<FillAreaSpawner>();
     }
 
     private void Update()
     {
-        //  Debug.Log(blockSpawner.createdCubes.Count);
-       // IsiklariAcin();
+        for (int i = 0; i < startedCubes.Count; i++)
+        {
+            if (startedCubes[i].isDestroyed == true)
+            {
+                startedCubes.Remove(startedCubes[i]);             
+            }
+        }
     }
 
     public bool HandleCreateNextLevel()
     {
-        if (createdBlocks.Count > 0)
-        {
-            for (int i = 0; i < createdBlocks.Count; i++)
-            {
-                Destroy(createdBlocks[i]);
-            }
-        }
-
-        ++currentLevelIndex;
+       ++currentLevelIndex;
 
         if (levelInfoAsset.levelInfos.Count >= currentLevelIndex)
         {
@@ -84,7 +77,7 @@ public class LevelManager : MonoBehaviour
 
     void CreateNextLevel()
     {
-        blocksFromImage = blockSpawner.CreateBlockFromImage(levelInfoAsset.levelInfos[currentLevelIndex - 1], blockContainer);
+        blocksFromImage = fillAreaSpawner.CreateBlockFromImage(levelInfoAsset.levelInfos[currentLevelIndex - 1], blockContainer);
         CreateBlocks();
     }
 
@@ -110,44 +103,13 @@ public class LevelManager : MonoBehaviour
             startedCubes.Add(tmpCube);
         }
     }
-
     public void ActivateBlocks()
     {
         for (int i = 0; i < startedCubes.Count; i++)
         {
-            if (startedCubes[i].rb != null )
-            startedCubes[i].rb.isKinematic = false;
+            if (startedCubes[i].rb != null)
+                startedCubes[i].rb.isKinematic = false;
             startedCubes[i].GetComponent<Collider>().enabled = true;
-        }
-    }
-
-
-    public void IsiklariAcin()
-    {
-     
-
-
-
-    
-    }
-
-    public void OnBlockCreated(FillAreaController blockController)
-    {
-        createdBlocks.Add(blockController);
-        Debug.Log("Collected Block Count " + collectedBlocks.Count);
-
-        Debug.Log(blockSpawner.createdCubes.Capacity);
-
-    }
-
-    public void OnBlockCollected(FillAreaController blockController)
-    {
-        collectedBlocks.Add(blockController);
-        Debug.Log($"{collectedBlocks.Count} / {createdBlocks.Count} <- Collected Block Count");
-
-        if (collectedBlocks.Count == createdBlocks.Count)
-        {
-            LevelCompleted?.Invoke();
         }
     }
 }

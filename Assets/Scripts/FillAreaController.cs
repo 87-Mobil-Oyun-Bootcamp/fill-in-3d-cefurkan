@@ -34,10 +34,7 @@ public class FillAreaController : MonoBehaviour
                     break;
                 case BlockState.Collected:
 
-                    OnCollected?.Invoke(this);
-
-                    OnCreated -= LevelManager.Instance.OnBlockCreated;
-                    OnCollected -= LevelManager.Instance.OnBlockCollected;
+                    OnCollected?.Invoke(this);               
 
                     break;
                 default:
@@ -46,17 +43,23 @@ public class FillAreaController : MonoBehaviour
         }
     }
 
-    public System.Action<FillAreaController> OnCreated { get; set; }
-    public System.Action<FillAreaController> OnCollected { get; set; }
+    public Action<FillAreaController> OnCreated { get; set; }
+    public Action<FillAreaController> OnCollected { get; set; }
 
     BlockState blockState = BlockState.Default;
 
-
-    private void OnEnable()
+    private void Update()
     {
-        OnCreated += LevelManager.Instance.OnBlockCreated;
-        OnCollected += LevelManager.Instance.OnBlockCollected;
+        if(LevelManager.Instance.blocksFromImage.Count <= 50)
+        {
+            for (int i = 0; i < LevelManager.Instance.blocksFromImage.Count; i++)
+            {        
+                    LevelManager.Instance.blocksFromImage[i].GetComponent<ColorChanger>().enabled = true;               
+            }            
+        }
+
     }
 
-    
+
+
 }

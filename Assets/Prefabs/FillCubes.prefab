@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4906462060649679511}
   - component: {fileID: 7820744156106510748}
   - component: {fileID: -9043391385688643738}
+  - component: {fileID: -162655911307326564}
   m_Layer: 0
   m_Name: FillCubes
   m_TagString: Block
@@ -91,7 +92,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3850588218083766758}
-  m_Material: {fileID: 13400000, guid: 7a232a53b3571e44f8913374cbed8e8c, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -128,3 +129,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &-162655911307326564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3850588218083766758}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab27cafa44f6d6c4da857d459e6a8032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
+  colorIndex: 0
+  lerpTime: 15
