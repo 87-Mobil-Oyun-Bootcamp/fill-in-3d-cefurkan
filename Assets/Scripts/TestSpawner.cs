@@ -16,7 +16,7 @@ public class TestSpawner : MonoBehaviour
     {
         LevelManager.Instance.blockContainer.localPosition = new Vector3(transform.position.x + 7.5f,
             transform.position.y - .3f, transform.position.z + 3.6f);
-        for (float i = 0; i < 15.3f; i += .3f)
+        for (float i = -0.6f; i < 15.9f; i += .3f)
         {
             for (float j = 0; j < 9f; j += .3f)
             {

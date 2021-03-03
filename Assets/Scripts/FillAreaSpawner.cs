@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockSpawner : MonoBehaviour
+public class FillAreaSpawner : MonoBehaviour
 {
-    Vector3 blockPos = Vector3.zero;
+    Vector3 fillArea = Vector3.zero;
 
     public List<Color> colorsList;
 
@@ -23,13 +23,13 @@ public class BlockSpawner : MonoBehaviour
                     continue;
                 }
 
-                blockPos = new Vector3(
+                fillArea = new Vector3(
                     levelInfo.size * (x - (levelInfo.sprite.texture.width * .5f)),
                     levelInfo.size * .5f,
                     levelInfo.size * (y - (levelInfo.sprite.texture.height * .5f)));
 
                 GameObject cubeObj = Instantiate(levelInfo.baseObj, transform);
-                cubeObj.transform.localPosition = blockPos;
+                cubeObj.transform.localPosition = fillArea;
                 colorsList.Add(color);
                 cubeObj.GetComponent<FillAreaController>().targetColor = color;
                 cubeObj.GetComponent<Renderer>().material.color = Color.gray;

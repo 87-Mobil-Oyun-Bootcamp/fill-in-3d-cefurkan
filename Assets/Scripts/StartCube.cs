@@ -7,6 +7,13 @@ public class StartCube : MonoBehaviour
 {
     public Rigidbody rb;
 
+    private void Update()
+    {
+     
+    }
+
+
+
     private void OnTriggerEnter(Collider other)
     {
 

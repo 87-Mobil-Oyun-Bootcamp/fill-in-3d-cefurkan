@@ -22,13 +22,16 @@ public class LevelManager : MonoBehaviour
 
     private static LevelManager instance;
 
+    public Material ab;
+
     int currentLevelIndex = 0;
 
     [HideInInspector]
-    public BlockSpawner blockSpawner = new BlockSpawner();
+    public FillAreaSpawner blockSpawner = new FillAreaSpawner();
 
     List<FillAreaController> createdBlocks = new List<FillAreaController>();
     List<FillAreaController> collectedBlocks = new List<FillAreaController>();
+
     List<GameObject> blocksFromImage = new List<GameObject>();
     List<StartCube> startedCubes = new List<StartCube>();
 
@@ -49,12 +52,13 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        blockSpawner = GetComponent<BlockSpawner>();
+        blockSpawner = GetComponent<FillAreaSpawner>();
     }
 
-    private void Start()
+    private void Update()
     {
-      //  Debug.Log(blockSpawner.createdCubes.Count);
+        //  Debug.Log(blockSpawner.createdCubes.Count);
+       // IsiklariAcin();
     }
 
     public bool HandleCreateNextLevel()
@@ -111,22 +115,23 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < startedCubes.Count; i++)
         {
+            if (startedCubes[i].rb != null )
             startedCubes[i].rb.isKinematic = false;
             startedCubes[i].GetComponent<Collider>().enabled = true;
         }
     }
-    public void Os()
+
+
+    public void IsiklariAcin()
     {
-        for (int i = 0; i < startedCubes.Count; i++)
-        {
-            if(startedCubes[i].rb.isKinematic == false)
-            startedCubes[i].rb.isKinematic = true;
-        }
+     
+
+
+
+    
     }
-  
 
-
-public void OnBlockCreated(FillAreaController blockController)
+    public void OnBlockCreated(FillAreaController blockController)
     {
         createdBlocks.Add(blockController);
         Debug.Log("Collected Block Count " + collectedBlocks.Count);
