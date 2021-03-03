@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public Animator anim;
+
     public static LevelManager Instance => instance;
 
     public Action LevelCompleted;
@@ -39,6 +41,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (instance == null)
         {
             instance = this;
@@ -59,6 +62,11 @@ public class LevelManager : MonoBehaviour
             {
                 startedCubes.Remove(startedCubes[i]);             
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            anim.SetTrigger("finish");
         }
     }
 

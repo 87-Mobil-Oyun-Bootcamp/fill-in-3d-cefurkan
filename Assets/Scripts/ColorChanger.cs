@@ -16,7 +16,7 @@ public class ColorChanger : MonoBehaviour
     {
         meshRenderer = GetComponent<MeshRenderer>();
     }
-   
+    
     void Update()
     {
         if (LevelManager.Instance.startedCubes.Count <= 90f)

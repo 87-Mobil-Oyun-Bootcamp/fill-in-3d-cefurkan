@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.identity;
         }
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, (speed * Time.deltaTime *3));
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, (speed * Time.fixedDeltaTime * 3));
     }
 
 }
