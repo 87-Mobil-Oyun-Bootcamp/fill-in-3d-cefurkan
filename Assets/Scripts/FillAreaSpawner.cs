@@ -37,6 +37,7 @@ public class FillAreaSpawner : MonoBehaviour
                 cubeObj.transform.localScale = Vector3.one * levelInfo.size;
 
                 createdCubes.Add(cubeObj);
+                LevelManager.Instance.endGameCubes.Add(cubeObj);
             }
         }
 

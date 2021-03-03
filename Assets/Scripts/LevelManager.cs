@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
 
     [Space]
     [SerializeField]
-    public Transform blockContainer;
+    public Transform fillAreaContainer;
 
     private static LevelManager instance;
 
@@ -33,9 +33,12 @@ public class LevelManager : MonoBehaviour
 
     public List<GameObject> blocksFromImage = new List<GameObject>();
     public List<StartCube> startedCubes = new List<StartCube>();
+    public List<GameObject> endGameCubes = new List<GameObject>();
 
     public Transform startCubeTransform;
     public GameObject startCubes;
+
+    public int startCubeShapes;
 
 
 
@@ -52,6 +55,8 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
         fillAreaSpawner = GetComponent<FillAreaSpawner>();
+
+      
     }
 
     private void Update()
@@ -66,10 +71,29 @@ public class LevelManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.O))
         {
-            anim.SetTrigger("finish");
+            anim.SetBool("isFinished", true);
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EndGameAnim();
+        }
+
+       
+    }
+    void EndGameAnim()
+    {
+        for(int i = 0; i < endGameCubes.Count * .5; i++)
+        {
+            endGameCubes[i].GetComponent<Rigidbody>().isKinematic = false;
+            endGameCubes[i].GetComponent<Rigidbody>().useGravity = true;
+            endGameCubes[i].GetComponent<BoxCollider>().isTrigger = false;
+            endGameCubes[i].GetComponent<BoxCollider>().enabled = true;
+            endGameCubes[i].gameObject.transform.parent = null;
+            endGameCubes.Remove(endGameCubes[i]);
         }
     }
-
     public bool HandleCreateNextLevel()
     {
        ++currentLevelIndex;
@@ -85,7 +109,7 @@ public class LevelManager : MonoBehaviour
 
     void CreateNextLevel()
     {
-        blocksFromImage = fillAreaSpawner.CreateBlockFromImage(levelInfoAsset.levelInfos[currentLevelIndex - 1], blockContainer);
+        blocksFromImage = fillAreaSpawner.CreateBlockFromImage(levelInfoAsset.levelInfos[currentLevelIndex - 1], fillAreaContainer);
         CreateBlocks();
     }
 
@@ -98,7 +122,7 @@ public class LevelManager : MonoBehaviour
         int modIndex = 0;
         int modCounter = 0;
 
-        for (int i = 0; i < blocksFromImage.Count; i++)
+        for (int i = 0; i < blocksFromImage.Count ; i++)
         {
             if (i % 10 == 0)
                 modCounter++;
@@ -107,8 +131,24 @@ public class LevelManager : MonoBehaviour
             modCounter = modCounter % 10;
 
             StartCube tmpCube = Instantiate(startCube, startCubeTransform);
-            tmpCube.transform.position = new Vector3(xOffset - modIndex * 0.3f, yOffset + modCounter * 0.3f, zOffset);
-            startedCubes.Add(tmpCube);
+
+
+            switch(startCubeShapes)
+            {
+                case 1:
+                    tmpCube.transform.position = new Vector3(xOffset - modIndex * 0.35f, yOffset + modCounter * 0.5f, zOffset);
+                    startedCubes.Add(tmpCube);
+
+                    break;
+
+                case 2:
+                   
+               
+                    break;
+
+            }
+
+            
         }
     }
     public void ActivateBlocks()

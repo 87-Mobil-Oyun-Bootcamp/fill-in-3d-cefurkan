@@ -11,7 +11,7 @@ public class TestSpawner : MonoBehaviour
 
     private void Start()
     {
-        LevelManager.Instance.blockContainer.localPosition = new Vector3(transform.position.x + 7.5f,
+        LevelManager.Instance.fillAreaContainer.localPosition = new Vector3(transform.position.x + 7.5f,
             transform.position.y - .3f, transform.position.z + 3.6f);
         for (float i = -0.6f; i < 15.9f; i += .3f)
         {
