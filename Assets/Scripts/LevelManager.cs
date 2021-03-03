@@ -40,6 +40,9 @@ public class LevelManager : MonoBehaviour
 
     public int startCubeShapes;
 
+    public int filledCubeCount;
+    public int maxStartedCubeAmount = 1;
+    public float NormalizedStartedFillAmount() => (float)filledCubeCount / maxStartedCubeAmount;
 
 
     private void Awake()
@@ -65,7 +68,8 @@ public class LevelManager : MonoBehaviour
         {
             if (startedCubes[i].isDestroyed == true)
             {
-                startedCubes.Remove(startedCubes[i]);             
+                startedCubes.Remove(startedCubes[i]);
+                filledCubeCount++;
             }
         }
 
@@ -138,6 +142,7 @@ public class LevelManager : MonoBehaviour
                 case 1:
                     tmpCube.transform.position = new Vector3(xOffset - modIndex * 0.35f, yOffset + modCounter * 0.5f, zOffset);
                     startedCubes.Add(tmpCube);
+                    maxStartedCubeAmount = startedCubes.Count;
 
                     break;
 
