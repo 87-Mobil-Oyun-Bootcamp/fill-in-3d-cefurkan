@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance => instance;
 
-    public System.Action LevelCompleted;
+    public Action LevelCompleted;
 
     [Space]
     [SerializeField]
@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
     List<GameObject> blocksFromImage = new List<GameObject>();
     List<StartCube> startedCubes = new List<StartCube>();
 
-    Collider startingCollider;
+
 
     public Transform startCubeTransform;
 
@@ -49,13 +49,12 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        startingCollider = startCubeTransform.GetComponentInChildren<Collider>();
         blockSpawner = GetComponent<BlockSpawner>();
     }
 
     private void Start()
     {
-        Debug.Log(blockSpawner.createdCubes.Count);
+      //  Debug.Log(blockSpawner.createdCubes.Count);
     }
 
     public bool HandleCreateNextLevel()
@@ -116,8 +115,18 @@ public class LevelManager : MonoBehaviour
             startedCubes[i].GetComponent<Collider>().enabled = true;
         }
     }
+    public void Os()
+    {
+        for (int i = 0; i < startedCubes.Count; i++)
+        {
+            if(startedCubes[i].rb.isKinematic == false)
+            startedCubes[i].rb.isKinematic = true;
+        }
+    }
+  
 
-    public void OnBlockCreated(FillAreaController blockController)
+
+public void OnBlockCreated(FillAreaController blockController)
     {
         createdBlocks.Add(blockController);
         Debug.Log("Collected Block Count " + collectedBlocks.Count);

@@ -9,18 +9,17 @@ public class StartCube : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       
+
         var comp2 = other.gameObject.GetComponent<FillAreaController>();
-        Debug.Log(comp2);
         if (comp2)
         {
             GetComponent<Collider>().enabled = false;
             comp2.trigger.enabled = false;
             comp2.transform.position += new Vector3(0f, 0.3f);
-            StartCoroutine(OsmanAga());
+            StartCoroutine(FillWithLerp());
         }
 
-        IEnumerator OsmanAga()
+        IEnumerator FillWithLerp()
         {
             var timer = 0f;
             while (true)
