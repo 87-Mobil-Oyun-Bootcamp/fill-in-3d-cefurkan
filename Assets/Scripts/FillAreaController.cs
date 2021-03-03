@@ -9,7 +9,7 @@ public enum BlockState
     Collected
 }
 
-public class BlockController : MonoBehaviour
+public class FillAreaController : MonoBehaviour
 {
     public Color targetColor;
     public Collider trigger;
@@ -46,8 +46,8 @@ public class BlockController : MonoBehaviour
         }
     }
 
-    public System.Action<BlockController> OnCreated { get; set; }
-    public System.Action<BlockController> OnCollected { get; set; }
+    public System.Action<FillAreaController> OnCreated { get; set; }
+    public System.Action<FillAreaController> OnCollected { get; set; }
 
     BlockState blockState = BlockState.Default;
 

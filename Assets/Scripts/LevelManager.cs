@@ -27,8 +27,8 @@ public class LevelManager : MonoBehaviour
     [HideInInspector]
     public BlockSpawner blockSpawner = new BlockSpawner();
 
-    List<BlockController> createdBlocks = new List<BlockController>();
-    List<BlockController> collectedBlocks = new List<BlockController>();
+    List<FillAreaController> createdBlocks = new List<FillAreaController>();
+    List<FillAreaController> collectedBlocks = new List<FillAreaController>();
     List<GameObject> blocksFromImage = new List<GameObject>();
     List<StartCube> startedCubes = new List<StartCube>();
 
@@ -117,7 +117,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void OnBlockCreated(BlockController blockController)
+    public void OnBlockCreated(FillAreaController blockController)
     {
         createdBlocks.Add(blockController);
         Debug.Log("Collected Block Count " + collectedBlocks.Count);
@@ -126,7 +126,7 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    public void OnBlockCollected(BlockController blockController)
+    public void OnBlockCollected(FillAreaController blockController)
     {
         collectedBlocks.Add(blockController);
         Debug.Log($"{collectedBlocks.Count} / {createdBlocks.Count} <- Collected Block Count");

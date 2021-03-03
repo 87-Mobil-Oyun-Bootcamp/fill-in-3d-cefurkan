@@ -31,7 +31,7 @@ public class BlockSpawner : MonoBehaviour
                 GameObject cubeObj = Instantiate(levelInfo.baseObj, transform);
                 cubeObj.transform.localPosition = blockPos;
                 colorsList.Add(color);
-                cubeObj.GetComponent<BlockController>().targetColor = color;
+                cubeObj.GetComponent<FillAreaController>().targetColor = color;
                 cubeObj.GetComponent<Renderer>().material.color = Color.gray;
                 // colordan cektik
                 cubeObj.transform.localScale = Vector3.one * levelInfo.size;

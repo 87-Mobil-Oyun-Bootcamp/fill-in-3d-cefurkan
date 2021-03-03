@@ -10,7 +10,7 @@ public class StartCube : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
        
-        var comp2 = other.gameObject.GetComponent<BlockController>();
+        var comp2 = other.gameObject.GetComponent<FillAreaController>();
         Debug.Log(comp2);
         if (comp2)
         {

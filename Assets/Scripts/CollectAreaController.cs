@@ -15,7 +15,7 @@ public class CollectAreaController : MonoBehaviour
                 other.gameObject.layer = LayerMask.NameToLayer("CollectedBlock");
             }
 
-            var blockController = other.GetComponent<BlockController>();
+            var blockController = other.GetComponent<FillAreaController>();
 
             if (blockController)
             {

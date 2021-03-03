@@ -7,7 +7,7 @@ public class TextureControl : MonoBehaviour
 {
    private void OnTriggerEnter(Collider other)
    {
-      var comp = other.GetComponent<BlockController>();
+      var comp = other.GetComponent<FillAreaController>();
       if (comp)
       {
          transform.GetComponent<MeshRenderer>().enabled = false;
