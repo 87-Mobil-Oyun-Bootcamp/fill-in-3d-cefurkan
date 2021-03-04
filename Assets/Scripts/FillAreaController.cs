@@ -50,7 +50,7 @@ public class FillAreaController : MonoBehaviour
 
     private void Update()
     {
-        if(LevelManager.Instance.blocksFromImage.Count <= 50)
+        if (LevelManager.Instance.blocksFromImage.Count <= GetComponent<ColorChanger>().lessThanAmount)
         {
             for (int i = 0; i < LevelManager.Instance.blocksFromImage.Count; i++)
             {        

@@ -17,11 +17,15 @@ MonoBehaviour:
     size: 0.3
     baseObj: {fileID: 3850588218083766758, guid: 515f8eec53dfb4134847f36be359befb,
       type: 3}
-  - sprite: {fileID: 21300000, guid: 50374608030c5934bb9ef8e677d92c58, type: 3}
+  - sprite: {fileID: 21300000, guid: 241d6b5eda32a8c4085a61b30066aa37, type: 3}
     size: 0.3
     baseObj: {fileID: 3850588218083766758, guid: 515f8eec53dfb4134847f36be359befb,
       type: 3}
   - sprite: {fileID: 21300000, guid: dde54c3f8e5724044910499b8b6a070d, type: 3}
+    size: 0.3
+    baseObj: {fileID: 3850588218083766758, guid: 515f8eec53dfb4134847f36be359befb,
+      type: 3}
+  - sprite: {fileID: 21300000, guid: 50374608030c5934bb9ef8e677d92c58, type: 3}
     size: 0.3
     baseObj: {fileID: 3850588218083766758, guid: 515f8eec53dfb4134847f36be359befb,
       type: 3}
@@ -30,10 +34,6 @@ MonoBehaviour:
     baseObj: {fileID: 3850588218083766758, guid: 515f8eec53dfb4134847f36be359befb,
       type: 3}
   - sprite: {fileID: 21300000, guid: 3e1188d7e3bd26d46a4197b0e295538c, type: 3}
-    size: 0.3
-    baseObj: {fileID: 3850588218083766758, guid: 515f8eec53dfb4134847f36be359befb,
-      type: 3}
-  - sprite: {fileID: 21300000, guid: 241d6b5eda32a8c4085a61b30066aa37, type: 3}
     size: 0.3
     baseObj: {fileID: 3850588218083766758, guid: 515f8eec53dfb4134847f36be359befb,
       type: 3}

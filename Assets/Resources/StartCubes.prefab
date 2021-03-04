@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3192681607077060751}
   - component: {fileID: 8095534162025369521}
   - component: {fileID: 5758813164886377013}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StartCubes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,8 +122,8 @@ Rigidbody:
   m_GameObject: {fileID: 3001984431832823633}
   serializedVersion: 2
   m_Mass: 0.1
-  m_Drag: 5
-  m_AngularDrag: 5
+  m_Drag: 3
+  m_AngularDrag: 3
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 1
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myColors:
-  - {r: 0, g: 0.31016356, b: 0.8018868, a: 1}
-  - {r: 0, g: 0.11690723, b: 0.3018868, a: 1}
-  - {r: 0, g: 0.30980393, b: 0.8000001, a: 1}
+  - {r: 1, g: 0.8564266, b: 0, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
   colorIndex: 1
-  lerpTime: 9
+  lerpTime: 12
+  lessThanAmount: 100

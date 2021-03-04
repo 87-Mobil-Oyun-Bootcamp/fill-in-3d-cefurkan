@@ -11,6 +11,7 @@ public class ColorChanger : MonoBehaviour
    public int colorIndex = 0;
    public float lerpTime = 1f;
      float timeToChangeIndex;
+    public int lessThanAmount = 100;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class ColorChanger : MonoBehaviour
     
     void Update()
     {
-        if (LevelManager.Instance.startedCubes.Count <= 60f)
+        if (LevelManager.Instance.startedCubes.Count <= lessThanAmount)
         {
             meshRenderer.material.color = Color.Lerp(meshRenderer.material.color, myColors[colorIndex],
                   lerpTime * Time.deltaTime);

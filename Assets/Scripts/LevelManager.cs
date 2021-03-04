@@ -59,7 +59,7 @@ public class LevelManager : MonoBehaviour
         }
         fillAreaSpawner = GetComponent<FillAreaSpawner>();
 
-      
+
     }
 
     private void Update()
@@ -73,7 +73,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             anim.SetBool("isFinished", true);
 
@@ -84,11 +84,11 @@ public class LevelManager : MonoBehaviour
             EndGameAnim();
         }
 
-       
+
     }
     void EndGameAnim()
     {
-        for(int i = 0; i < endGameCubes.Count * .5; i++)
+        for (int i = 0; i < endGameCubes.Count * .5; i++)
         {
             endGameCubes[i].GetComponent<Rigidbody>().isKinematic = false;
             endGameCubes[i].GetComponent<Rigidbody>().useGravity = true;
@@ -100,7 +100,7 @@ public class LevelManager : MonoBehaviour
     }
     public bool HandleCreateNextLevel()
     {
-       ++currentLevelIndex;
+        ++currentLevelIndex;
 
         if (levelInfoAsset.levelInfos.Count >= currentLevelIndex)
         {
@@ -119,43 +119,62 @@ public class LevelManager : MonoBehaviour
 
     void CreateBlocks()
     {
-        float xOffset = 1f;
-        float yOffset = 0.15f;
-        float zOffset = -4f;
-
-        int modIndex = 0;
-        int modCounter = 0;
-
-        for (int i = 0; i < blocksFromImage.Count ; i++)
+        switch (startCubeShapes)
         {
-            if (i % 10 == 0)
-                modCounter++;
+            case 1:
+                float xOffset = 1f;
+                float yOffset = 0.15f;
+                float zOffset = -4f;
 
-            modIndex = i % 10;
-            modCounter = modCounter % 10;
+                int modIndex = 0;
+                int modCounter = 0;
 
-            StartCube tmpCube = Instantiate(startCube, startCubeTransform);
+                for (int i = 0; i < blocksFromImage.Count; i++)
+                {
+                    if (i % 10 == 0)
+                        modCounter++;
 
+                    modIndex = i % 10;
+                    modCounter = modCounter % 10;
 
-            switch(startCubeShapes)
-            {
-                case 1:
+                    StartCube tmpCube = Instantiate(startCube, startCubeTransform);
+
                     tmpCube.transform.position = new Vector3(xOffset - modIndex * 0.35f, yOffset + modCounter * 0.5f, zOffset);
                     startedCubes.Add(tmpCube);
                     maxStartedCubeAmount = startedCubes.Count;
+                }
+                break;
 
-                    break;
+            case 2:
 
-                case 2:
-                   
-               
-                    break;
+                int maxHeight = 9;
+                for (int height = 0; height < maxHeight; height++)
+                {
+                    int length = maxHeight - height;
+                    for (int x = -length; x <= length; x++)
+                    {
+                        for (int z = -length; z <= length; z++)
+                        {
+                            if (Mathf.Abs(x) == length || Mathf.Abs(z) == length)
+                            {
+                                StartCube tmpCube2 = Instantiate(startCube, startCubeTransform);
 
-            }
+                                tmpCube2.transform.position = new Vector3(x * .305f, height *.305f , -4 - z * .305f);
+                                startedCubes.Add(tmpCube2); 
+                                maxStartedCubeAmount = startedCubes.Count;
+                            }
+                        }
+                    }
+                }
 
-            
+
+                break;
+
         }
+
+
     }
+
     public void ActivateBlocks()
     {
         for (int i = 0; i < startedCubes.Count; i++)
