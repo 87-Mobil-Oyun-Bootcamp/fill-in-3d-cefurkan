@@ -15,7 +15,7 @@ public class TestSpawner : MonoBehaviour
             transform.position.y - .3f, transform.position.z + 3.6f);
         for (float i = -0.6f; i < 15.9f; i += .3f)
         {
-            for (float j = 0; j < 9f; j += .3f)
+            for (float j = -3; j < 9f; j += .3f)
             {
                 var obj = Instantiate(cube, new Vector3(transform.position.x + i, transform.position.y, transform.position.z + j),
                     Quaternion.identity, transform);
