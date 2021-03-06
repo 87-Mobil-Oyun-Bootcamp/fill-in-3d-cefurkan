@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17407405, g: 0.21767454, b: 0.29986328, a: 1}
+  m_IndirectSpecularColor: {r: 0.17407376, g: 0.2176739, b: 0.29986233, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -885,7 +885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -72.099976}
+  m_AnchoredPosition: {x: 0, y: -72.1001}
   m_SizeDelta: {x: 631.3, y: 206.72998}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &507242771
@@ -1417,7 +1417,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb9d6881b593b6645aa2fc4ef1384029, type: 2}
+  - {fileID: 2100000, guid: cf6d550bfe5a5ba439fa6e36ee6b299c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1458,7 +1458,6 @@ GameObject:
   - component: {fileID: 896300763}
   - component: {fileID: 896300764}
   - component: {fileID: 896300765}
-  - component: {fileID: 896300766}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -1496,20 +1495,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 323319465}
   levelInfoAsset: {fileID: 11400000, guid: c834a23eef893425cb48abc6ca039e61, type: 2}
-  startCube: {fileID: 8157698052225483313, guid: 70fc5315ce61bff41a559784482b0d41,
+  startCube: {fileID: 8157698052225483313, guid: 8bbae5991edfc6c4ebe45b58fb996fa4,
     type: 3}
   fillAreaContainer: {fileID: 323319464}
   ab: {fileID: 2100000, guid: d93bbfb959e48cf44843c9e731a13b6c, type: 2}
   fillAreaSpawner: {fileID: 0}
   blocksFromImage: []
   startedCubes: []
+  startedCubes2: []
+  startedCubes3: []
   endGameCubes: []
   startCubeTransform: {fileID: 1701890654}
-  startCubes: {fileID: 3001984431832823633, guid: 70fc5315ce61bff41a559784482b0d41,
-    type: 3}
-  startCubeShapes: 2
+  startCubeShapes: 3
   filledCubeCount: 0
   maxStartedCubeAmount: 1
+  levelFinish: 0
 --- !u!114 &896300765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1524,18 +1524,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorsList: []
   createdCubes: []
---- !u!114 &896300766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 896300762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a1d32fffff1e1f4f9ba613220447e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &897267566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,7 +1590,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb9d6881b593b6645aa2fc4ef1384029, type: 2}
+  - {fileID: 2100000, guid: cf6d550bfe5a5ba439fa6e36ee6b299c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1806,7 +1794,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -72.099976}
+  m_AnchoredPosition: {x: 0, y: -72.1001}
   m_SizeDelta: {x: 631.3, y: 206.72998}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1081528687
@@ -2084,7 +2072,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb9d6881b593b6645aa2fc4ef1384029, type: 2}
+  - {fileID: 2100000, guid: cf6d550bfe5a5ba439fa6e36ee6b299c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2384,7 +2372,7 @@ SpriteRenderer:
   m_Size: {x: 10.8, y: 19.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1477908489
@@ -2959,7 +2947,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb9d6881b593b6645aa2fc4ef1384029, type: 2}
+  - {fileID: 2100000, guid: cf6d550bfe5a5ba439fa6e36ee6b299c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3395,5 +3383,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91b658ac2960874f9c0608046eb4a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 1671596956029509031, guid: a3ebd9e191232714aa94db8f6e46518d, type: 3}
+  cube: {fileID: 1671596956029509031, guid: d56a2c66e1e14ef42a5efa80975064ab, type: 3}
   cubeList: []

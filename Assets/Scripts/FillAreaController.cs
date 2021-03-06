@@ -14,6 +14,8 @@ public class FillAreaController : MonoBehaviour
     public Color targetColor;
     public Collider trigger;
     public MeshRenderer mR;
+    public BoxCollider col;
+
     public BlockState BlockState
     {
         get
@@ -34,7 +36,7 @@ public class FillAreaController : MonoBehaviour
                     break;
                 case BlockState.Collected:
 
-                    OnCollected?.Invoke(this);               
+                    OnCollected?.Invoke(this);
 
                     break;
                 default:
@@ -53,9 +55,15 @@ public class FillAreaController : MonoBehaviour
         if (LevelManager.Instance.blocksFromImage.Count <= GetComponent<ColorChanger>().lessThanAmount)
         {
             for (int i = 0; i < LevelManager.Instance.blocksFromImage.Count; i++)
-            {        
-                    LevelManager.Instance.blocksFromImage[i].GetComponent<ColorChanger>().enabled = true;               
-            }            
+            {
+                LevelManager.Instance.blocksFromImage[i].GetComponent<ColorChanger>().enabled = true;
+                if (LevelManager.Instance.blocksFromImage.Count < 15)
+                {
+                    // Eğer son 15 tane küp kalmışsa colliderlar * 5
+                    LevelManager.Instance.blocksFromImage[i].GetComponent<BoxCollider>().size = new Vector3(5f, 5f, 5f);              
+                }
+            }
+
         }
 
     }

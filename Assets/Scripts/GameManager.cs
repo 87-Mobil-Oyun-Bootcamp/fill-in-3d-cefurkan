@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -21,7 +22,6 @@ public class GameManager : MonoBehaviour
             return;
         }
     }
-
     private void Start()
     {
         if (LevelManager.Instance.HandleCreateNextLevel())
@@ -40,5 +40,15 @@ public class GameManager : MonoBehaviour
     void OnLevelCompleted()
     {
         Debug.Log("Current Level Completed!");
+    }
+
+    
+    private void Update()
+    {
+        if (LevelManager.Instance.endGameCubes.Count<=0)
+        {
+            //todo bu if in icine newgame kontrolu yapilirsa daha saglikli olur start();
+        }
+        
     }
 }

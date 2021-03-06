@@ -10,7 +10,14 @@ public class TextureControl : MonoBehaviour
       var comp = other.GetComponent<FillAreaController>();
       if (comp)
       {
-         transform.GetComponent<MeshRenderer>().enabled = false;
+            if(LevelManager.Instance.blocksFromImage.Count < 15)
+            {
+            }
+            else
+            {
+                transform.GetComponent<MeshRenderer>().enabled = false;
+            }
+         
       }
    }
 }

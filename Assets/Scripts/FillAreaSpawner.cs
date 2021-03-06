@@ -9,7 +9,6 @@ public class FillAreaSpawner : MonoBehaviour
     public List<Color> colorsList;
 
     public List<GameObject> createdCubes = new List<GameObject>();
-
     public List<GameObject> CreateBlockFromImage(LevelInfo levelInfo, Transform transform)
     {
         for (int x = 0; x < levelInfo.sprite.texture.width; x++)

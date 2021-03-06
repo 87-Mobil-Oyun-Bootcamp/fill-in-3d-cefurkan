@@ -5,18 +5,26 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public FixedJoystick veriableJoystick;
+    private FixedJoystick veriableJoystick;
 
     public Rigidbody rb;
 
 
     Quaternion targetRotation;
 
+    private void Awake()
+    {
+        veriableJoystick = FindObjectOfType<FixedJoystick>();
+    }
+
     void FixedUpdate()
     {
-            Run();
-            Rotate();
-        
+        if (LevelManager.Instance.levelFinish)
+        {
+            return;
+        }
+        Run();
+        Rotate();
     }
 
     void Run()
@@ -31,18 +39,24 @@ public class PlayerController : MonoBehaviour
 
     void Rotate()
     {
-        var input = new Vector3(veriableJoystick.Horizontal, 0, veriableJoystick.Vertical);
-
-        if (input != Vector3.zero)
+        if (Input.GetMouseButton(0))
         {
-            targetRotation = Quaternion.LookRotation(input);
-        }
-        else
-        {
-            transform.rotation = Quaternion.identity;
-        }
+            var input = new Vector3(veriableJoystick.Horizontal, 0, veriableJoystick.Vertical);
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, (speed * Time.fixedDeltaTime * 3));
+            if (input != Vector3.zero)
+            {
+                targetRotation = Quaternion.LookRotation(input);
+            }
+            else
+            {
+               // transform.rotation = Quaternion.identity;
+            }
+
+            var rot = Quaternion.RotateTowards(transform.rotation, targetRotation, (speed/ 10  ));
+            
+            transform.rotation= Quaternion.Lerp(transform.rotation,rot,Time.fixedDeltaTime*10);
+        }
+        
     }
 
 }
